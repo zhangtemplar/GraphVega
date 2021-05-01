@@ -24,7 +24,7 @@ import IVSkewChart from './ivSkewChart';
 import GreeksChart from './greeksChart';
 import axios from 'axios';
 import clone from 'clone';
-import { getServerUrl } from "../../utils/bsm";
+import { SERVER_URL } from '../../utils/url';
 
 class OptionChain extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class OptionChain extends Component {
 
   getOptionChain = (symbol, expiry) => {
     this.setState({ loading: true }, () => {
-      const url = `${getServerUrl()}/api/options/getChain`;
+      const url = `${SERVER_URL}/api/options/getChain`;
       axios
         .post(url, {
           symbol: symbol,
@@ -272,7 +272,7 @@ class OptionChain extends Component {
                       &nbsp;expiry option chain (rounded to 2 places)</h6>
                   </center>
                   <GreeksChart
-                    data={this.state.greeksChart == "calls" ? 
+                    data={this.state.greeksChart === "calls" ? 
                       this.state.callGreeksData :
                       this.state.putGreeksData}
                   />

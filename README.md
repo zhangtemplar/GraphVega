@@ -51,12 +51,14 @@ To get GraphVega up and running on your local machine, follow these steps:
     This project uses Tradier’s market data API for options and stock
     prices.
 
-4.  In the root directory  create a `.env` file and enter your API key as
+4.  In the root directory  create a `.env` file and enter your API key and the API url as
     follows:
-    
-    `TRADIER_API_KEY=YOUR_API_KEY_HERE`
-
-    NOTE: You can also add an optional variable: `TRADIER_API_BASE_URL=BASE_API_URL` if you'd like to use the brokerage API endpoint. You could optionally set `REACT_APP_SERVER_URL=your_backend_url` if your server address is not `http://localhost:8000`.
+    ```
+    TRADIER_API_KEY=YOUR_API_KEY_HERE
+    API_BASE_URL=https://sandbox.tradier.com/v1/
+    ```
+    Replace `YOUR_API_KEY_HERE` with the API key you obtained from step 3.
+    NOTE: You can also change the variable `API_BASE_URL` to the brokerage API url if you'd like to use the brokerage API endpoint.
 
 5.  Run the application in either of two ways: Locally or via Docker (explained below):
 
@@ -67,7 +69,7 @@ In the root directory, run the following command:
 
 Note that the front end react app runs on `http://localhost:3000` while
 the server runs on `http://localhost:8000` so make sure you don’t have
-anything running on those ports.
+anything running on those ports. If you want to run the server on a different port, change the port variable in `server/app.js`, and change the`SERVER_URL` variable in `src/utils/url.js` to the new server url.
 
 ### Docker
 
@@ -120,7 +122,7 @@ Stopping:
 5.  Observe the P/L chart and adjust the implied volatility and days
     till expiry with the sliders as you like.
 
-## :palm_tree: Code structure
+## :palm_tree: Code Structure
 
 Broadly, the project is divided into the front end and the back end. 
 - All frontend files are stored in the `src` directory.
